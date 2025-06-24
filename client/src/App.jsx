@@ -12,7 +12,6 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="gridview" element={<Gridview />} />
           <Route path="details" element={<Details />} />
           <Route path="cart" element={<Cart />} />
           <Route path="*" element={<Listing />} />
