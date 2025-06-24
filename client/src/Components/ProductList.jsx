@@ -274,33 +274,50 @@ function ProductList() {
            <div className={viewMode === 'grid' ? 'grid grid-cols-3 gap-4' : 'flex flex-col'}>
   {/* Mapping over original items */}
   {items.map((image, index) => (
-    <div key={index} className={viewMode === 'grid' ? 'w-full px-2 py-2 mb-4' : 'w-full px-2 py-2 mb-4'}>
+    <div key={index} className={`w-full ${viewMode === 'grid' ? 'flex-col' : 'flex-row'} mb-4`}>
       <div
         className={`flex items-center justify-between bg-white p-4 shadow-md rounded-lg relative ${viewMode === 'grid' ? 'flex-col' : 'flex-row'}`}
       >
-        <div className="flex items-center space-x-4">
-          <img
-            src={image}
-            alt="Product"
-            className="w-50 h-50 object-cover rounded"
-          />
-          <div>
-            <h2 className="text-xl font-bold text-gray-800">Canon Camera EOS 2000, Black 10x zoom</h2>
-            <p className="text-md font-semibold text-gray-600">Lorem ipsum dolor sit amet</p>
-            <p className="text-md font-semibold text-gray-600">tempor incididunt ut labore</p>
-            <div className="flex flex-col items-start">
-              <p className="text-xl font-bold text-gray-900">$998.00</p>
-              <p className="text-sm text-green-500">Free Shipping</p>
-              <div className="flex items-center space-x-2 mt-2">
-                <span className="text-yellow-400">★★★★★</span>
-                <span className="text-sm text-gray-500">(154 orders)</span>
-              </div>
-              <button className="mt-2 py-2 px-4 text-white bg-blue-500 rounded-lg hover:bg-blue-600">
-                View details
-              </button>
+        {/* Grid View: Image above the text */}
+        {viewMode === 'grid' && (
+          <div className="flex justify-center mb-4">
+            <img
+              src={image}
+              alt="Product"
+              className="w-32 h-32 object-cover rounded"
+            />
+          </div>
+        )}
+        
+        {/* List View: Image beside the text */}
+        {viewMode === 'list' && (
+          <div className="flex-shrink-0">
+            <img
+              src={image}
+              alt="Product"
+              className="w-32 h-32 object-cover rounded"
+            />
+          </div>
+        )}
+
+        {/* Product Text */}
+        <div className="flex-1">
+          <h2 className="text-xl font-bold text-gray-800">Canon Camera EOS 2000, Black 10x zoom</h2>
+          <p className="text-md font-semibold text-gray-600">Lorem ipsum dolor sit amet</p>
+          <p className="text-md font-semibold text-gray-600">tempor incididunt ut labore</p>
+          <div className="flex flex-col items-start">
+            <p className="text-xl font-bold text-gray-900">$998.00</p>
+            <p className="text-sm text-green-500">Free Shipping</p>
+            <div className="flex items-center space-x-2 mt-2">
+              <span className="text-yellow-400">★★★★★</span>
+              <span className="text-sm text-gray-500">(154 orders)</span>
             </div>
+            <button className="mt-2 py-2 px-4 text-white bg-blue-500 rounded-lg hover:bg-blue-600">
+              View details
+            </button>
           </div>
         </div>
+        
         <button
           className="absolute top-2 right-2 p-2 rounded-full border-2 border-gray-300 hover:bg-gray-100 focus:outline-none"
           onClick={() => alert('Favorite clicked!')}
@@ -314,28 +331,50 @@ function ProductList() {
   {/* Conditionally map over extra items in grid view */}
   {viewMode === 'grid' &&
     extraItems.map((image, index) => (
-      <div key={index} className="w-full px-2 py-2 mb-4">
+      <div key={index} className={`w-full ${viewMode === 'grid' ? 'flex-col' : 'flex-row'} mb-4`}>
         <div
           className={`flex items-center justify-between bg-white p-4 shadow-md rounded-lg relative ${viewMode === 'grid' ? 'flex-col' : 'flex-row'}`}
         >
-          <div className="flex items-center space-x-4">
-            <img src={image} alt="Product" className="w-50 h-50 object-cover rounded" />
-            <div>
-              <h2 className="text-xl font-bold text-gray-800">Extra Product {index + 1}</h2>
-              <p className="text-md font-semibold text-gray-600">Extra product description</p>
-              <div className="flex flex-col items-start">
-                <p className="text-xl font-bold text-gray-900">$199.00</p>
-                <p className="text-sm text-green-500">Free Shipping</p>
-                <div className="flex items-center space-x-2 mt-2">
-                  <span className="text-yellow-400">★★★★★</span>
-                  <span className="text-sm text-gray-500">(50 orders)</span>
-                </div>
-                <button className="mt-2 py-2 px-4 text-white bg-blue-500 rounded-lg hover:bg-blue-600">
-                  View details
-                </button>
+          {/* Grid View: Image above the text */}
+          {viewMode === 'grid' && (
+            <div className="flex justify-center mb-4">
+              <img
+                src={image}
+                alt="Product"
+                className="w-32 h-32 object-cover rounded"
+              />
+            </div>
+          )}
+          
+          {/* List View: Image beside the text */}
+          {viewMode === 'list' && (
+            <div className="flex-shrink-0">
+              <img
+                src={image}
+                alt="Product"
+                className="w-32 h-32 object-cover rounded"
+              />
+            </div>
+          )}
+
+          {/* Product Text */}
+          <div className="flex-1">
+            <h2 className="text-xl font-bold text-gray-800">Canon Camera EOS 2000, Black 10x zoom </h2>
+            <p className="text-md font-semibold text-gray-600">Lorem ipsum dolor sit amet</p>
+          <p className="text-md font-semibold text-gray-600">tempor incididunt ut labore</p>
+            <div className="flex flex-col items-start">
+              <p className="text-xl font-bold text-gray-900">$199.00</p>
+              <p className="text-sm text-green-500">Free Shipping</p>
+              <div className="flex items-center space-x-2 mt-2">
+                <span className="text-yellow-400">★★★★★</span>
+                <span className="text-sm text-gray-500">(50 orders)</span>
               </div>
+              <button className="mt-2 py-2 px-4 text-white bg-blue-500 rounded-lg hover:bg-blue-600">
+                View details
+              </button>
             </div>
           </div>
+          
           <button
             className="absolute top-2 right-2 p-2 rounded-full border-2 border-gray-300 hover:bg-gray-100 focus:outline-none"
             onClick={() => alert('Favorite clicked!')}
